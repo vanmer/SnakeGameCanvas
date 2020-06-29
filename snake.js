@@ -55,8 +55,21 @@ function draw() {
   }
   ctx.drawImage(foodImg, food.x, food.y);
 
+  // old head position
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  // remove the tail
+  snake.pop();
+
+  // which direction
+  if ( d = "LEFT") snakeX -= box;
+  if ( d = "UP") snakeY -= box;
+  if ( d = "RIGHT") snakeX += box;
+  if ( d = "DOWN") snakeY += box;
+
   ctx.fillStyle = "white";
-  ctx.font = "45px Helvetica";
+  ctx.font = "45px Changa one";
   ctx.fillText(score, 2+box, 1.6*box);
 }
 
