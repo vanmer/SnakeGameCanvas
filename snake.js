@@ -44,6 +44,16 @@ function direction(event) {
   }
 }
 
+// if the snake hits itself
+function collision(head, array) {
+  for (let i = 0; i < array.length; i++) {
+    if (head.x == array[i].x && head.y == array[i].y) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // draw everything to canvas
 function draw() {
   ctx.drawImage(ground, 0, 0);
@@ -85,12 +95,20 @@ function draw() {
     x: snakeX,
     y: snakeY
   }
+
+  // game over
+  if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box
+      || collision(newHead, snake) ) {
+        clearInterval(game);
+    }
+
+
   snake.unshift(newHead);
 
   // score-board
   ctx.fillStyle = "white";
-  ctx.font = "45px Changa one";
-  ctx.fillText(score, 2*box, 1.6*box);
+  ctx.font = "45px Helvetica";
+  ctx.fillText(score, 2 * box, 1.6 * box);
 }
 
 // call draw function every 100ms
