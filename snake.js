@@ -49,12 +49,16 @@ document.addEventListener("keydown",direction);
 
 function direction(event) {
   if (event.keyCode == 37) {
+    left.play();
     d = "LEFT";
   } else if (event.keyCode == 38) {
+    up.play();
     d = "UP";
   } else if (event.keyCode == 39) {
+    right.play();
     d = "RIGHT";
   } else if (event.keyCode == 40) {
+    down.play();
     d = "DOWN";
   }
 }
