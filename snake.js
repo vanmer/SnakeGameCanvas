@@ -16,19 +16,21 @@ let snake = [];
 snake[0] = {
   x: 9 * box,
   y: 10 * box
-}
+};
 
 // create the food
 let food = {
-  x: Math.floor(Math.random()*17+1) * box,
-  y: Math.floor(Math.random()*15+3) * box
+  x: Math.floor(Math.random() * 17 + 1) * box,
+  y: Math.floor(Math.random() * 15 + 3) * box
 }
 
 // create the score variable
 let score = 0;
 
 // control the snake
-document.addEventListener("keydown", direction);
+let d;
+
+document.addEventListener("keydown",direction);
 
 function direction(event) {
   if (event.keyCode == 37) {
@@ -63,14 +65,25 @@ function draw() {
   snake.pop();
 
   // which direction
-  if ( d = "LEFT") snakeX -= box;
-  if ( d = "UP") snakeY -= box;
-  if ( d = "RIGHT") snakeX += box;
-  if ( d = "DOWN") snakeY += box;
+  if( d == "LEFT") snakeX -= box;
+  if( d == "UP") snakeY -= box;
+  if( d == "RIGHT") snakeX += box;
+  if( d == "DOWN") snakeY += box;
 
+  // if the snake eats the food
+  
+
+  // add new head
+  let newHead = {
+    x: snakeX,
+    y: snakeY
+  }
+  snake.unshift(newHead);
+
+  // score-board
   ctx.fillStyle = "white";
   ctx.font = "45px Changa one";
-  ctx.fillText(score, 2+box, 1.6*box);
+  ctx.fillText(score, 2*box, 1.6*box);
 }
 
 // call draw function every 100ms
